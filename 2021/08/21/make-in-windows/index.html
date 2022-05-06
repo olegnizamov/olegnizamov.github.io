@@ -1,0 +1,35 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Как использовать make на windows · Блог Олега Низамова</title><meta name="description" content="Как использовать make на windows - Олег Низамов"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="https://olegnizamov.ru/atom.xml" title="Блог Олега Низамова"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Блог Олега Низамова" type="application/atom+xml">
+</head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">Блог Олега Низамова</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>ГЛАВНАЯ</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>АРХИВ</p></a><a href="/about" target="_self" class="li component-nav-item"><p>ОБО МНЕ</p></a><a href="/recommended" target="_self" class="li component-nav-item"><p>СОВЕТУЮ</p></a><ul class="shortcut-icons"><a href="https://github.com/olegnizamov" target="_blank"><img src="/images/github.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="post-container"><div class="post"><article class="post-block"><h1 class="post-title">Как использовать make на windows</h1><div class="post-info">21 авг. 2021 г.</div><div class="post-content"><h2 id="Как-использовать-make-на-windows"><a href="#Как-использовать-make-на-windows" class="headerlink" title="Как использовать make на windows."></a>Как использовать make на windows.</h2><p><strong>Зачем make?</strong></p>
+<p><a target="_blank" rel="noopener" href="http://ru.wikipedia.org/wiki/Make">make</a> — утилита предназначенная для автоматизации преобразования файлов из одной формы в другую. Правила преобразования задаются в скрипте с именем Makefile, который должен находиться в корне рабочей директории проекта. Сам скрипт состоит из набора правил, которые в свою очередь описываются:</p>
+<ol>
+<li>целями (то, что данное правило делает);</li>
+<li>реквизитами (то, что необходимо для выполнения правила и получения целей);</li>
+<li>командами (выполняющими данные преобразования).</li>
+</ol>
+<p>В общем виде синтаксис makefile можно представить так:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># Индентация осуществляется исключительно при помощи символов табуляции,</span><br><span class="line"># каждой команде должен предшествовать отступ</span><br><span class="line">&lt;цели&gt;: &lt;реквизиты&gt;</span><br><span class="line">	&lt;команда #1&gt;</span><br><span class="line">	...</span><br><span class="line">	&lt;команда #n&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>То есть, правило make это ответы на три вопроса:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;Из чего делаем? (реквизиты)&#125; ---&gt; [Как делаем? (команды)] ---&gt; &#123;Что делаем? (цели)&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Такой полезный механизм используется кулхакерами в Unix системах с давних пор. А как его использовать в Windows?</p>
+<p><strong>И как же в Windows?</strong></p>
+<ol>
+<li><p>Заходим на <a target="_blank" rel="noopener" href="http://gnuwin32.sourceforge.net/packages/make.htm">сайт</a></p>
+</li>
+<li><p>Выбираем ссылку Complete package, except sources и устанавливаем как обычную программу. Для простоты лучше создать в корне диска папку GnuWin32.</p>
+<img src="/2021/08/21/make-in-windows/1.png" class=""></li>
+<li><p>Создаем файл  Makefile** (перед командами должен идти tab!)**</p>
+</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">up:</span><br><span class="line">@echo &quot;Project up&quot;</span><br><span class="line"></span><br><span class="line">down:</span><br><span class="line">@echo &quot;Project down&quot;</span><br></pre></td></tr></table></figure>
+
+<img src="/2021/08/21/make-in-windows/2.png" class="">
+
+<ol start="4">
+<li><p>Выполняем следующую команду для запуска файла - C:\GnuWin32\bin\make.exe up, где GnuWin32 - папка в которую установили make файл.</p>
+</li>
+<li><p>И получаем вывод:</p>
+<img src="/2021/08/21/make-in-windows/3.png" class=""></li>
+</ol>
+</div></article></div></div></main><footer class="footer-container"><div class="paginator"><a href="/2021/08/23/listen-1/" class="prev">Предыдущий пост</a><a href="/2021/08/10/bitrix-in-cloud/" class="next">Следующий пост</a></div><div class="copyright"><p>© 2019 - 2022 <a href="https://olegnizamov.ru">Олег Низамов</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer></body></html>

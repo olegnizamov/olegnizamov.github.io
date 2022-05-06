@@ -1,0 +1,67 @@
+<!DOCTYPE html><html lang="ru"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Как создать блог на Github Pages · Блог Олега Низамова</title><meta name="description" content="Как создать блог на Github Pages - Олег Низамов"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" href="/favicon.ico"><link rel="stylesheet" href="/css/prontera.css"><link rel="search" type="application/opensearchdescription+xml" href="https://olegnizamov.ru/atom.xml" title="Блог Олега Низамова"><meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Блог Олега Низамова" type="application/atom+xml">
+</head><body><header class="feature-header"><nav class="component-nav"><ul><div class="logo-container"><a href="/"><h2 class="title">Блог Олега Низамова</h2></a></div><a href="/" target="_self" class="li component-nav-item"><p>ГЛАВНАЯ</p></a><a href="/archives" target="_self" class="li component-nav-item"><p>АРХИВ</p></a><a href="/about" target="_self" class="li component-nav-item"><p>ОБО МНЕ</p></a><a href="/recommended" target="_self" class="li component-nav-item"><p>СОВЕТУЮ</p></a><ul class="shortcut-icons"><a href="https://github.com/olegnizamov" target="_blank"><img src="/images/github.svg" class="icon"></a></ul></ul></nav></header><main class="container"><div id="post-container"><div class="post"><article class="post-block"><h1 class="post-title">Как создать блог на Github Pages</h1><div class="post-info">10 авг. 2021 г.</div><div class="post-content"><h2 id="Как-создать-блог-на-Github-Pages"><a href="#Как-создать-блог-на-Github-Pages" class="headerlink" title="Как создать блог на Github Pages"></a>Как создать блог на Github Pages</h2><p>В этой статье рассказано, как просто и с нуля создать сайт и сделать его доступным по адресу sitename.github.io (бесплатный хостинг Github) и подключить к нему доменное имя.</p>
+<p>Использовать будем <a target="_blank" rel="noopener" href="https://hexo.io/" title="Считаешь себя синьором? Да кого ты обманываешь">HEXO</a>.</p>
+<p>Примерный план работы:</p>
+<ul>
+<li>Зачем этот генератор статических сайтов?</li>
+<li>Установка hexo на компьютер</li>
+<li>Настройки сайта</li>
+<li>Создание репозитория</li>
+<li>Добавляем код в репозиторий</li>
+<li>Настраиваем репозитория для публикации</li>
+<li>Добавляем в репозиторий CNAME</li>
+<li>Добавляем А-запись в DNS домена</li>
+</ul>
+<p><strong>Зачем этот генератор статических сайтов?</strong></p>
+<p>Зачем они нужны, эти генераторы? Ведь можно написать самому CSS- и html-код для каждой страницы своего сайта. Но при добавлении, например, записи в журнал каждый раз придётся переделывать страницу со списком записей, ссылки под статьёй (на следующую и предыдущую статью), добавлять новые категории и пр, вести учет тегов. А если это можно делать автоматически, зачем это делать ручками?</p>
+<p>Пользуясь генератором, Вы создаёте обычные текстовые файлы для записей и страниц, html-кода в них нет (html-теги, разумеется, можно использовать при желании). Очень популярным форматом (но не единственным) является язык разметки Markdown. Генератор съедает ваши текстовые файлы и генерирует html-файлы, которые остаётся только выложить на сайт.</p>
+<p>Так же вы не теряете производительность сервера (да и сервера у вас нет) на генерацию страниц. Любые бэкенд языки при наличии большого количества записей начинают “подтормаживать”, а кэширование - это по сути генерация статичных данных, которые будут подгружены на сайте. И зачем нам посредник?)</p>
+<p><strong>Установка hexo на компьютер</strong></p>
+<ol>
+<li>Устанавливаем на компьютер <a target="_blank" rel="noopener" href="https://nodejs.org/en/" title="Считаешь себя синьором? Да кого ты обманываешь">Node.js</a> и <a target="_blank" rel="noopener" href="http://git-scm.com/" title="Считаешь себя синьором? Да кого ты обманываешь">Git</a></li>
+<li>Устанавливаем hexo</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-cli -g</span><br><span class="line">$ hexo init blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ npm install</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p><strong>Nota bene!</strong> При установке на Windows(Мы говорим про PowerShell, не CMD) у меня возникла ошибка “Невозможно загрузить файл …, так как выполнение сценариев отключено в этой системе”. Подробнее можно <a target="_blank" rel="noopener" href="https://zawindows.ru/%D1%80%D0%B5%D1%88%D0%B5%D0%BD%D0%B8%D0%B5-%D0%BF%D1%80%D0%BE%D0%B1%D0%BB%D0%B5%D0%BC%D1%8B-%D0%BD%D0%B5%D0%B2%D0%BE%D0%B7%D0%BC%D0%BE%D0%B6%D0%BD%D0%BE-%D0%B7%D0%B0%D0%B3%D1%80%D1%83%D0%B7/">почитать тут</a><br>Как решить - для тех, кому лень читать.<br>Вводим:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Get-ExecutionPolicy</span><br></pre></td></tr></table></figure>
+<p>Если получили:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Get-Restricted</span><br></pre></td></tr></table></figure>
+<p>Тогда разрешаем выполнение файлов</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ Set-ExecutionPolicy unrestricted</span><br></pre></td></tr></table></figure>
+
+<p><strong>Настройки сайта</strong><br>3. Забегаем на сайт hexo и из <a target="_blank" rel="noopener" href="https://hexo.io/themes/">большого списка шаблонов</a> выбираем тот, который нравится вам.<br><strong>Nota bene!</strong> Перед глобальным выбором шаблонов и изучение их плюсов и минусов советую создать несколько страниц. Это позволит понять + и - данного шаблона.<br><strong>Nota bene!</strong> Мой выбор остановился на <a target="_blank" rel="noopener" href="https://github.com/AngryPowman/hexo-theme-prontera">prontera</a> и <a target="_blank" rel="noopener" href="http://powman.org/">сайт демо</a></p>
+<img src="/2021/08/10/how-to-create-blog/snapshot.png" class="" title="Дизайн шаблона как автора.">
+<ol start="4">
+<li>(Пропускаем, если выбираем другой шаблон) Из настроек шаблона видно, что еще установить hexo-renderer-jade и hexo-generator-feed:<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-renderer-jade --save</span><br><span class="line">$ npm install hexo-generator-feed --save</span><br></pre></td></tr></table></figure></li>
+<li>Подключаем создание автоматической папки для ресурсов в source/_posts и имя поста. Для этого идем в файл _config.yml и меняем<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">post_asset_folder: true</span><br></pre></td></tr></table></figure></li>
+<li>Создайте новый пост блога командой<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new &quot;имя-нового-поста&quot;</span><br></pre></td></tr></table></figure></li>
+<li>Редактирование материала. В целом используется md разметка, но есть парочка важных элементов</li>
+</ol>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/ru/docs/tag-plugins.html">Вставка кода</a></li>
+<li><a target="_blank" rel="noopener" href="https://hexo.io/ru/docs/asset-folders.html">Вставка картинки</a></li>
+</ul>
+<ol start="8">
+<li>Чтобы посмотреть результат работы до деплоя на github - <a target="_blank" rel="noopener" href="http://localhost:4000/">http://localhost:4000/</a>. Если результат устраивает - деплоим.<img src="/2021/08/10/how-to-create-blog/server.png" class="" title="Здесь будет описан точный адрес сайта."></li>
+</ol>
+<p><strong>Создание репозитория</strong><br>9. Создаем репозиторий в гите с именем пользователя. В моем случае olegnizamov.github.io</p>
+<img src="/2021/08/10/how-to-create-blog/projectname.png" class="" title="Имя проекта.">
+
+<p><strong>Добавляем код в репозиторий</strong><br>10. Для автоматического деплоя блога на GitHub установим hexo-deployer-git</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<ol start="11">
+<li>и редактируем файл _config.yml<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repo: &lt;repository url&gt; # https://github.com/username/username.github.io</span><br></pre></td></tr></table></figure></li>
+<li>и отправляем изменения на блог<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo clean &amp;&amp; hexo deploy</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p><strong>Настраиваем репозитория для публикации</strong><br><strong>Nota bene!</strong> Полную информацию можно почитать тут <a target="_blank" rel="noopener" href="https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-records-with-your-dns-provider">Managing a custom domain for your GitHub Pages site</a><br>13. Переходим в настройки проекта -&gt; Страницы (Settings-&gt;Pages) указываем в поле Custom domain домен, который будет использоваться как зеркало.</p>
+<img src="/2021/08/10/how-to-create-blog/domain.png" class="">
+
+<p><strong>Добавляем в репозиторий CNAME</strong><br>14. Если мы настраивали зеркало через github настройки, то файл CNAME на сервере создается автоматически. Однако есть проблема, при деплои он каждый раз будет затираться.Создавать данный файл ручками (мы ленивые и за автоматизацию) - плохо. Чтобы создать файл CNAME с помощью Hexo, просто создайте ~/hexo/source/CNAME с необходимым содержанием.<br>При выполнении hexo deploy этот файл будет обновляться на Github Pages.</p>
+<img src="/2021/08/10/how-to-create-blog/cname1.png" class="">
+<img src="/2021/08/10/how-to-create-blog/cname2.png" class="">
+
+<p><strong>Добавляем А-запись в DNS домена</strong><br>15. Ну и не забываем, добавить данные А записи к домену, чтобы все корректно настроилось.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">185.199.108.153</span><br><span class="line">185.199.109.153</span><br><span class="line">185.199.110.153</span><br><span class="line">185.199.111.153</span><br></pre></td></tr></table></figure>
+<img src="/2021/08/10/how-to-create-blog/atype.gif" class="">
+</div></article></div></div></main><footer class="footer-container"><div class="paginator"><a href="/2021/08/10/bitrix-in-cloud/" class="prev">Предыдущий пост</a><a href="/2021/06/08/%D0%B3%D0%BE%D0%B4%D0%BD%D0%BE-3/" class="next">Следующий пост</a></div><div class="copyright"><p>© 2019 - 2022 <a href="https://olegnizamov.ru">Олег Низамов</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/AngryPowman/hexo-theme-prontera" target="_blank">hexo-theme-prontera</a>.</p></div></footer></body></html>
